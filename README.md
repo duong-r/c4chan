@@ -5,16 +5,26 @@
 This project serves as the minimum viable product for an anonymous message board WebApp
 that is to be enjoyed by the Code 4 Community team. 
 
+Users are loaded into the home page which is comprised of three components:
+* A navigation bar which contains the welcome banner and links to other pages.
+* An input bar which is used to turn user input into new messages.
+* A message board which displays messages in reverse chronological order.
+
+
+### Fulfilled Requirements
 Users can submit non-empty messages of 128 characters or less, which will update the
-screen with their new message at the top of the board.
+screen with newer messages appearing at the top of the board.
 
 The app is hosted locally, and multiple instances can be ran across different web browsers/tabs.
 Users can refresh their browsers to update their timelines to include messages sent from other
 browsers.
 
+## Bonuses
 This message board also features json-server as an in-memory solution to storing messages.
+Light CSS styling and themeing has been added to the message board that allows messages to
+stand out when hovered over.
 
-### Installation
+## Installation
 
 To install this project to your local computer:
 1. Open the terminal and direct yourself to your projects folder (or preferred directory)
@@ -22,7 +32,7 @@ To install this project to your local computer:
 3. Direct yourself via the terminal to the C4Chan project directory, and enter "npm install"
 4. If there are dependencies that need to be addressed, enter "npm audit fix --force"
 
-### Deployment
+## Deployment
 
 To deploy the app:
 1. Open a new tab within the terminal, and enter "npx json-server --watch data/db.json --port 8000"
