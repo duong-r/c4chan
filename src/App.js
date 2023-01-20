@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { ChakraProvider } from '@chakra-ui/react'
-import Home from './components/Home'
+import Home from './views/Home'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import NavigationBar from './components/NavigationBar'
-import Profile from './components/Profile'
+import Profile from './views/Profile'
 
 function App () {
   return (

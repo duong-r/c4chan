@@ -1,28 +1,28 @@
 import { Button, Input, HStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addMessage } from '../redux/messages-reducer'
+import { createMessageThunk } from '../services/messages-thunks'
 
+/**
+ * Creates an input bar that includes an area for user text-input,
+ * and a send button.
+ */
 const InputBar = () => {
   const [text, setText] = useState('')
   const dispatch = useDispatch()
 
+  /**
+   * When the send button is clicked a new message
+   * object is created, and createMessageThunk passes
+   * the object to axios for creation/posting.
+   */
   const handleClick = () => {
     const messageInput = document.getElementById('message-input')
     if (messageInput.value !== '') {
       const timestamp = new Date().getTime()
       const message = { body: text, timestamp }
       messageInput.value = ''
-
-      dispatch(addMessage(message))
-
-    //   fetch("http://localhost:8000/messages", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(message),
-    //   }).then(() => {
-    //     console.log("new message added");
-    //   });
+      dispatch(createMessageThunk(message))
     }
   }
 
@@ -42,22 +42,3 @@ const InputBar = () => {
 }
 
 export default InputBar
-
-//   const [text, setText] = useState("");
-
-//   const handleClick = () => {
-//     const messageInput = document.getElementById("message-input");
-//     if (messageInput.value !== "") {
-//       const timestamp = new Date().getTime();
-//       const message = { body: text, timestamp };
-//       messageInput.value = "";
-
-//       fetch("http://localhost:8000/messages", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(message),
-//       }).then(() => {
-//         console.log("new message added");
-//       });
-//     }
-//   };

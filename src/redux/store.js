@@ -1,5 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import messages from './messages-reducer'
+import messagesReducer from './messages-reducer'
+
+/**
+ * Stores states that should be available between components
+ * and allows reliant components to use the most recent data.
+ */
 export default configureStore({
-  reducer: { messages }
+  reducer: { messagesData: messagesReducer }
 })

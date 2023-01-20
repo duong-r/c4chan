@@ -1,7 +1,9 @@
-# Getting Started with Create React App
+# Welcome to C4Chan
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
+This project serves as the minimum viable product for an anonymous message board WebApp
+that is to be enjoyed by the Code 4 Community team.
 ## Available Scripts
 
 In the project directory, you can run:

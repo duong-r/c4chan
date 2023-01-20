@@ -1,0 +1,24 @@
+{
+  "messages": [
+    {
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut e",
+      "timestamp": 1674178296741,
+      "id": 1
+    },
+    {
+      "body": "Hello!! My name is Ryan:)",
+      "timestamp": 1674178351074,
+      "id": 2
+    },
+    {
+      "body": "You're looking rather handsome today (or pretty iunno)",
+      "timestamp": 1674178420689,
+      "id": 3
+    },
+    {
+      "body": "by the way, that first message is 128 characters",
+      "timestamp": 1674178458436,
+      "id": 4
+    }
+  ]
+}

@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+/**
+ * Creates the Navigation Bar that includes links
+ * to other user-accessible pages.
+ */
 const NavigationBar = () => {
   return (
   <nav className="navbar">

@@ -1,19 +1,45 @@
 import { createSlice } from '@reduxjs/toolkit'
-const initialMessages = [
-  { body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum et leo fermentum bibendum. Quisque quis cursus ligula. Pra', timestamp: 39949418181 },
-  { body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum et leo fermentum bibendum. Quisque quis cursus ligula. Pra', timestamp: 1245243321488 },
-  { body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fermentum et leo fermentum bibendum. Quisque quis cursus ligula. Pra', timestamp: 323249419414 }
-]
+import { createMessageThunk, findMessagesThunk } from '../services/messages-thunks'
+
+/**
+ * messages are initially empty, and is then populated with data from
+ * the messages table in db.json.
+ *
+ * manages the loading state of messages that are being brought
+ * in from the db.
+ */
+const initialState = {
+  messages: [],
+  loading: false
+}
+
+/**
+ * Slice is used to maintain the state of
+ * messages.
+ */
 export const messagesSlice = createSlice({
   name: 'messages',
-  initialState: initialMessages,
-  reducers: {
-    addMessage (state, action) {
-      state.push({
-        body: action.payload.body,
-        timestamp: action.payload.timestamp
-      })
-    }
+  initialState,
+  extraReducers: {
+    [findMessagesThunk.pending]:
+      (state) => {
+        state.loading = true
+        state.messages = []
+      },
+    [findMessagesThunk.fulfilled]:
+      (state, { payload }) => {
+        state.loading = false
+        state.messages = payload
+      },
+    [findMessagesThunk.rejected]:
+      (state) => {
+        state.loading = false
+      },
+    [createMessageThunk.fulfilled]:
+      (state, { payload }) => {
+        state.loading = false
+        state.messages.push(payload)
+      }
   }
 })
 

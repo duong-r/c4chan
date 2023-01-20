@@ -1,23 +1,27 @@
-import { React } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { findMessagesThunk } from '../services/messages-thunks'
 
 const MessageBoard = () => {
-  const messages = useSelector((state) => state.messages)
-  //   const sortedMessages = messages.sort((m1, m2) => {
-  //     return m2.timestamp - m1.timestamp
-  //   })
-  const messages2 = []
+  const { messages, loading } = useSelector((state) => state.messagesData)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(findMessagesThunk())
+  }, [])
+  const sortedMessages = []
 
+  // Sort recieved messages in a new array
   messages.map((m) => {
-    return messages2.push({ body: m.body, timestamp: m.timestamp })
+    return sortedMessages.push({ body: m.body, timestamp: m.timestamp })
   })
-  messages2.sort((m1, m2) => {
+  sortedMessages.sort((m1, m2) => {
     return m2.timestamp - m1.timestamp
   })
 
   return (
     <div>
-      {messages2.map((message) => (
+      { loading && <div className='loading-item'>Loading...</div> }
+      { sortedMessages.map((message) => (
         <div className="message-block" key={message.id}>
           <p className="message-body">{message.body}</p>
           <p className="message-time">
