@@ -8,6 +8,10 @@ that is to be enjoyed by the Code 4 Community team.
 Users can submit non-empty messages of 128 characters or less, which will update the
 screen with their new message at the top of the board.
 
+The app is hosted locally, and multiple instances can be ran across different web browsers/tabs.
+Users can refresh their browsers to update their timelines to include messages sent from other
+browsers.
+
 This message board also features json-server as an in-memory solution to storing messages.
 
 ### Installation
